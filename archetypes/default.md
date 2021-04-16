@@ -1,4 +1,3 @@
----
-featured_image:
----
-
++++
+featured_image = ""
++++

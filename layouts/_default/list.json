@@ -6,7 +6,7 @@
 	"api": "{{ $element.Permalink }}index.json",
 	"date": "{{ $element.Date }}",
 	"last_modified": "{{ $element.Lastmod }}",
-	"author": "{{ $element.Params.author }}",
+	"authors": {{ jsonify $element.Params.authors }},
 	"featured_image": {{ jsonify $element.Params.featured_image }},
 	"tags": {{ jsonify $element.Params.tags }},
 	"keywords": {{ jsonify $element.Keywords }},

@@ -7,10 +7,29 @@
 
 	{{ $title := print .Title " · " .Site.Title }}
 	{{ if .IsHome }}{{ $title = .Site.Title }}{{ end }}
+
+	{{ $description := .Summary }}
+	{{ if .IsHome }}{{ $description = .Site.Params.description }}{{ end }}
+
+	{{ $image := .Site.Params.embedLogo }}
+	{{ if isset .Params "featured_image"}}{{ $image = .Params.featured_image }}{{ end }}
+
 	<title>{{ $title }}</title>
 
 	<meta name="HandheldFriendly" content="True" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<meta name="title" content="{{ $title }}">
+	<meta name="description" content="{{ $description }}">
+	<meta name="image" content="{{ $image }}" />
+	<meta name="keywords" content="{{ delimit .Keywords ", "}}">
+	<meta name="author" content="{{ .Params.author }}">
+	<meta name="language" content="{{ .Site.Language.LanguageName }}">
+	<meta name="og:title" content="{{ $title }}" />
+	<meta name="og:image" content="{{ $image }}" />
+	<meta name="og:site_name" content="{{ default .Site.Title .Site.Params.siteName }}" />
+	<meta name="og:description" content="{{ $description }}" />
+	<meta name="theme-color" content="#ffb032" />
 
 	{{ $styles := resources.Get "scss/main.scss" | resources.ExecuteAsTemplate "style.main.scss" . | toCSS | minify | fingerprint }}
 	<link rel="stylesheet" href="{{ $styles.Permalink }}" />
@@ -26,7 +45,7 @@
 
 		<footer class="site-footer outer">
 			<div class="site-footer-content inner">
-				<section class="copyright"><a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a> &copy;
+				<section class="copyright"><a href="{{ .Site.BaseURL }}">{{ .Site.Copyright }}</a> &copy;
 					{{ .Date.Format "2006" }}</section>
 					{{ with .Site.Menus.social }}
 					<span class="social-links">

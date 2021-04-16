@@ -4,15 +4,15 @@
 
 <header class="site-header">
     {{- partial "site-header.html" $ -}}
-
+	{{ .Scratch.Set "background" .Site.Params.headerBackground }}
     {{- partial "header-background.html" $ -}}
         <div class="inner site-header-content">
             <h1 class="site-title">{{ .Title }}</h1>
             <h2 class="site-description">
-                {{ if .Param "description" }}
+                {{ if .IsHome }}
                     {{ .Param "description" }}
                 {{ else }}
-                    A collection of {{ len .Pages }} post{{ if gt (len .Pages) 1 }}s{{ end }}
+                    A collection of {{ len .Pages }} item{{ if ne (len .Pages) 1 }}s{{ end }}
                 {{ end }}
             </h2>
         </div>

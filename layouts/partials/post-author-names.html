@@ -1,0 +1,45 @@
+<ul class="author-list">
+	{{ $authors := .Params.authors }}
+    {{- range $index, $author := $authors }}
+    {{- with $.Site.GetPage "taxonomy" (printf "authors/%s" (urlize $author)) }}
+    <li class="author-list-item">
+
+		<a href="{{ .Permalink }}">{{ .Params.name }}</a>
+		
+        <div class="author-card">
+            {{ if .Params.avatar }}
+            <img class="author-profile-image" src="{{ .Params.avatar }}" alt="{{ .Params.name }}" />
+            {{ else }}
+            <div class="author-profile-image">{{- partial "icons/avatar.html" -}}</div>
+            {{ end }}
+            <div class="author-info">
+                {{ if .Content }}
+                <div class="bio">
+                    <h2>{{ .Params.name }}</h2>
+                    <p>{{ .Content }}</p>
+                    <p><a href="{{ .Permalink }}">More posts</a> by {{ .Params.name }}.</p>
+                </div>
+                {{ else }}
+                <h2>{{ .Params.name }}</h2>
+                <p>Read <a href="{{ .Permalink }}">more posts</a> by this author.</p>
+                {{ end }}
+            </div>
+        </div>
+
+
+        <!-- {{ if .Params.avatar }}
+        <a href="{{ .Permalink }}" class="author-avatar">
+            <img class="author-profile-image" src="{{ .Params.avatar }}" alt="{{ .Params.name }}" />
+        </a>
+        {{ else }}
+        <a href="{{ .Permalink }}" class="author-avatar author-profile-image">{{- partial "icons/avatar.html" -}}</a>
+        {{ end }} -->
+
+    </li>
+
+	{{ if ne $index (sub (len $authors) 1) }}
+	{{ print ", " }}
+	{{ end }}
+    {{ end }}
+    {{ end }}
+</ul>

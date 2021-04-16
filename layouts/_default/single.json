@@ -3,7 +3,7 @@
 	"url": "{{ .Permalink }}",
 	"date": "{{ .Date }}",
 	"last_modified": "{{ .Lastmod }}",
-	"author": "{{ .Params.author }}",
+	"authors": {{ jsonify .Params.authors }},
 	"featured_image": {{ jsonify .Params.featured_image }},
 	"tags": {{ jsonify .Params.tags }},
 	"keywords": {{ jsonify .Keywords }},

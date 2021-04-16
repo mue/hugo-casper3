@@ -13,7 +13,7 @@ Either set the theme in your config to `casper3` or build with the `-t casper3` 
 
 ## Using the theme
 
-This theme is very image heavy so it is recommended to set a `feature_image` parameter in the front matter of any content.
+This theme is very image heavy so it is recommended to set a `featured_image` parameter in the front matter of any content.
 
 Content types you wish to appear on the homepage should be set in your [mainSections](https://gohugo.io/functions/where/#mainsections).
 
