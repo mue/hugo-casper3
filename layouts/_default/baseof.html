@@ -1,40 +1,51 @@
 <!DOCTYPE html>
 <html lang="{{ .Site.LanguageCode }}">
+
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-    {{ $title := print .Title " · " .Site.Title }}
-    {{ if .IsHome }}{{ $title = .Site.Title }}{{ end }}
-    <title>{{ $title }}</title>
+	{{ $title := print .Title " · " .Site.Title }}
+	{{ if .IsHome }}{{ $title = .Site.Title }}{{ end }}
+	<title>{{ $title }}</title>
 
-    <meta name="HandheldFriendly" content="True" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="HandheldFriendly" content="True" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    {{ $styles := resources.Get "scss/main.scss" | resources.ExecuteAsTemplate "style.main.scss" . | toCSS | minify | fingerprint }}
-    <link rel="stylesheet" href="{{ $styles.Permalink }}" />
+	{{ $styles := resources.Get "scss/main.scss" | resources.ExecuteAsTemplate "style.main.scss" . | toCSS | minify | fingerprint }}
+	<link rel="stylesheet" href="{{ $styles.Permalink }}" />
+	<script defer src='https://use.fontawesome.com/releases/v5.14.0/js/all.js'></script>
 
 </head>
+
 <body class="{{ block "body_class" . }} {{ end }}">
 
-    <div class="site-wrapper">
-        {{- block "main" . }}{{- end }}
+	<div class="site-wrapper">
+		{{- block "main" . }}{{- end }}
 
 
-        <footer class="site-footer outer">
-            <div class="site-footer-content inner">
-                <section class="copyright"><a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a> &copy; {{ .Date.Format "2006" }}</section>
-                <nav class="site-footer-nav">
-                    <a href="{{ .Site.BaseURL }}">Latest Posts</a>
-                    {{ if .Site.Params.facebook }}<a href="{{ .Site.Params.facebook }}" target="_blank" rel="noopener">Facebook</a>{{ end }}
-                    {{ if .Site.Params.twitter }}<a href="{{ .Site.Params.twitter }}" target="_blank" rel="noopener">Twitter</a>{{ end }}
-                    {{ if .Site.Params.github }}<a href="{{ .Site.Params.github }}" target="_blank" rel="noopener">Github</a>{{ end }}
-                    <a href="https://jonathanjanssens.com" target="_blank" rel="noopener" style="opacity: 0.5;">Hugo Casper3 by Jonathan Janssens</a>
-                </nav>
-            </div>
-        </footer>
+		<footer class="site-footer outer">
+			<div class="site-footer-content inner">
+				<section class="copyright"><a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a> &copy;
+					{{ .Date.Format "2006" }}</section>
+					{{ with .Site.Menus.social }}
+					<span class="social-links">
+						{{ range . }}
+						<a class="social-link" href='{{ .URL }}' title='{{ .Name }}' rel='noreferrer' target='_blank'>
+							<i class='{{ with .Params.icon }}{{- . -}}{{ end }}' style='font-size: x-large;'></i>
+						</a>
+						{{ end }}
+					</span>
+					{{ end }}
+				<nav class="site-footer-nav">
+					<!-- <a href="{{ .Site.BaseURL }}">Latest Posts</a> -->
+					<a href="https://gohugo.io" target="_blank" rel="noopener" style="opacity: 0.5;">Powered by Hugo</a>
+				</nav>
+			</div>
+		</footer>
 
-    </div>
+	</div>
 
 </body>
+
 </html>

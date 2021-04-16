@@ -3,14 +3,14 @@
 {{ define "main" }}
 
 <header class="site-home-header">
-    {{ .Scratch.Set "background" .Params.feature_image }}
+    {{ .Scratch.Set "background" .Site.Params.headerBackground }}
     {{- partial "header-background.html" . -}}
         <div class="inner">
             {{- partial "site-nav.html" . -}}
             <div class="site-header-content">
                 <h1 class="site-title">
-                    {{ if $.Site.Params.logo }}
-                        <img class="site-logo" src="{{ $.Site.Params.logo }}" alt="{{ .Site.Title }}" />
+                    {{ if $.Site.Params.headerLogo }}
+                        <img class="site-logo" src="{{ $.Site.Params.headerLogo }}" alt="{{ .Site.Title }}" />
                     {{ else }}
                         {{ $.Site.Title }}
                     {{ end }}
