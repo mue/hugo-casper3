@@ -1,0 +1,20 @@
+[
+	{{ range $index, $element := .Pages }}
+	{
+	"title": "{{ $element.Title }}",
+	"url": "{{ $element.Permalink }}",
+	"api": "{{ $element.Permalink }}index.json",
+	"date": "{{ $element.Date }}",
+	"last_modified": "{{ $element.Lastmod }}",
+	"author": "{{ $element.Params.author }}",
+	"featured_image": {{ jsonify $element.Params.featured_image }},
+	"tags": {{ jsonify $element.Params.tags }},
+	"keywords": {{ jsonify $element.Keywords }},
+	"summary": {{ jsonify (htmlUnescape $element.Summary) }},
+	"truncated": {{ $element.Truncated }}
+	}
+	{{ if ne $index (sub (len $.Pages) 1) }}
+	{{ print "," }}
+	{{ end }}
+	{{ end }}
+]

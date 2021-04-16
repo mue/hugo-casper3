@@ -1,0 +1,17 @@
+{
+	"title": "{{ .Title }}",
+	"url": "{{ .Permalink }}",
+	"date": "{{ .Date }}",
+	"last_modified": "{{ .Lastmod }}",
+	"author": "{{ .Params.author }}",
+	"featured_image": {{ jsonify .Params.featured_image }},
+	"tags": {{ jsonify .Params.tags }},
+	"keywords": {{ jsonify .Keywords }},
+	"summary": {{ jsonify (htmlUnescape .Summary) }},
+	"truncated": {{ .Truncated }},
+	"words": {{ .WordCount }},
+	"reading_time": {{ .ReadingTime }},
+	"plain_text": {{ jsonify (htmlUnescape .Plain) }},
+	"markdown": {{ jsonify .RawContent }},
+	"html": {{ jsonify (htmlUnescape .Content) }}
+}
