@@ -1,3 +1,4 @@
-+++
-feature_image = ""
-+++
+---
+featured_image:
+---
+
