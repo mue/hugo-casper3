@@ -3,7 +3,7 @@
 	{{- with $.Site.GetPage "taxonomy" (printf "authors/%s" (urlize .)) }}
 	<li class="author-list-item">
 
-		<div class="author-card">
+		<!-- <div class="author-card">
 			{{ if .Params.avatar }}
 			<img class="author-profile-image" src="{{ .Params.avatar }}"
 				alt="{{ .Params.name }}" />
@@ -22,7 +22,7 @@
 				<p>Read <a href="{{ .Permalink }}">more posts</a> by this author.</p>
 				{{ end }}
 			</div>
-		</div>
+		</div> -->
 
 		<div class="author-name-tooltip">
             {{ .Params.name }}

@@ -16,7 +16,7 @@
         <div class="authors">
             <ul>
                 {{ range (sort .Data.Pages ".Params.name" "asc") }}
-                {{- partial "author-overview.html" . -}}
+                {{/*- partial "author-overview.html" . -*/}}
                 {{ end }}
             </ul>
         </div>
