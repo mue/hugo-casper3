@@ -1,29 +1,29 @@
-## Demo
+## hugo-casper3
+Hugo port of the Casper 3 theme originally by Ghost. Forked and updated for use in the Mue Blog. Demo can be found at https://blog.muetab.com
 
-A demo with feature images is available in the repository [jonathanjanssens/hugo-casper3-demo](https://github.com/jonathanjanssens/hugo-casper3-demo).
 
 ## Installation
-
 ```$ mkdir themes
 $ cd themes
-$ git clone git@github.com:jonathanjanssens/hugo-casper3.git
+$ git clone git@github.com:mue/hugo-casper3.git
 ```
 
 Either set the theme in your config to `casper3` or build with the `-t casper3` flag.
 
-## Using the theme
 
+## Using the theme
 This theme is very image heavy so it is recommended to set a `featured_image` parameter in the front matter of any content.
 
 Content types you wish to appear on the homepage should be set in your [mainSections](https://gohugo.io/functions/where/#mainsections).
 
+
 ## Development Roadmap
+- [ ] Use SCSS from original theme instead of compiled CSS - also needs Hugo Pipes setting up
+- [x] Multi author support and author taxonomy (done via [this commit](https://github.com/mue/hugo-casper3/commit/31b96b5abe874a90b97b64022589db8a4462485a))
 
-[ ] Use SCSS from original theme instead of compiled CSS - also needs Hugo Pipes setting up
-
-[ ] Multi author support and author taxonomy
 
 ## Support
+*Text from the [original author](https://github.com/jonathanjanssens) of this repository is preserved below*
 
 It would be nice if you leave the credit to me in the footer, unless you make a donation to show support. I can't really police this though, it's MIT licensed anyway so you can do whatever you want with the theme...
 
