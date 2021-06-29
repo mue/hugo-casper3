@@ -1,24 +1,17 @@
 <!DOCTYPE html>
 <html lang="{{ .Site.LanguageCode }}">
-
 <head>
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-
 	{{ $title := print .Title " · " .Site.Title }}
 	{{ if .IsHome }}{{ $title = .Site.Title }}{{ end }}
-
 	{{ $description := .Summary }}
 	{{ if .IsHome }}{{ $description = .Site.Params.description }}{{ end }}
-
 	{{ $image := .Site.Params.embedLogo }}
 	{{ if isset .Params "featured_image"}}{{ $image = .Params.featured_image }}{{ end }}
-
 	<title>{{ $title }}</title>
-
 	<meta name="HandheldFriendly" content="True" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
 	<meta name="title" content="{{ $title }}">
 	<meta name="description" content="{{ $description }}">
 	<meta name="image" content="{{ $image }}" />
@@ -33,19 +26,14 @@
 	<meta name="og:site_name" content="{{ default .Site.Title .Site.Params.siteName }}" />
 	<meta name="og:description" content="{{ $description }}" />
 	<meta name="theme-color" content="#ffb032" />
-
 	{{ $styles := resources.Get "scss/main.scss" | resources.ExecuteAsTemplate "style.main.scss" . | toCSS | minify | fingerprint }}
-	<link rel="stylesheet" href="{{ $styles.Permalink }}" />
-	<script defer src='https://use.fontawesome.com/releases/v5.14.0/js/all.js'></script>
-
+	<link rel="stylesheet" href="{{ $styles.Permalink }}"  />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"  />
+	<script async defer data-website-id="0340ee65-2b2d-43a9-b364-da548cb5b9a3" src="https://umami.muetab.com/umami.js"></script>
 </head>
-
 <body class="{{ block "body_class" . }} {{ end }}">
-
 	<div class="site-wrapper">
 		{{- block "main" . }}{{- end }}
-
-
 		<footer class="site-footer outer">
 			<div class="site-footer-content inner">
 				<section class="copyright"><a href="{{ .Site.BaseURL }}">{{ .Site.Copyright }}</a> &copy;
@@ -65,9 +53,6 @@
 				</nav>
 			</div>
 		</footer>
-
 	</div>
-
 </body>
-
 </html>
